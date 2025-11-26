@@ -3,21 +3,32 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-export default function Loginpage() {
+export default function SignUpPage() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-800 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-gray-800 px-4 py-10">
             <div className="w-full max-w-md bg-gray-800 shadow-xl rounded-2xl p-8 border border-gray-700">
 
                 {/* Title */}
                 <h2 className="text-3xl font-bold text-center text-white mb-2">
-                    Welcome Back 
+                    Create Account 
                 </h2>
                 <p className="text-center text-gray-400 mb-6">
-                    Please login to continue
+                    Join us and start shopping today!
                 </p>
 
-                {/* Login Form */}
+                {/* SignUp Form */}
                 <form className="space-y-4">
+                    <div>
+                        <label className="block mb-1 text-gray-300 text-sm font-medium">
+                            Full Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter your full name"
+                            className="w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                        />
+                    </div>
+
                     <div>
                         <label className="block mb-1 text-gray-300 text-sm font-medium">
                             Email
@@ -35,26 +46,16 @@ export default function Loginpage() {
                         </label>
                         <input
                             type="password"
-                            placeholder="Enter your password"
+                            placeholder="Create a password"
                             className="w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                         />
-
-                        {/* Forgot Password */}
-                        <div className="text-left mt-1">
-                            <a
-                                href="#"
-                                className="text-blue-400 text-sm hover:underline"
-                            >
-                                Forgot password?
-                            </a>
-                        </div>
                     </div>
 
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-medium"
                     >
-                        Login
+                        Sign Up
                     </button>
                 </form>
 
@@ -65,17 +66,17 @@ export default function Loginpage() {
                     <div className="flex-grow border-t border-gray-700"></div>
                 </div>
 
-                {/* Google Login Button */}
+                {/* Google Sign Up */}
                 <button className="w-full flex items-center justify-center gap-3 bg-gray-700 border border-gray-600 text-white py-2 rounded-lg hover:bg-gray-600 transition">
                     <FcGoogle size={24} />
-                    <span className="font-medium">Login with Google</span>
+                    <span className="font-medium">Sign Up with Google</span>
                 </button>
 
-                {/* Register Link */}
+                {/* Login Link */}
                 <p className="text-center text-gray-400 text-sm mt-6">
-                    Don’t have an account?{" "}
-                    <a href="/signup" className="text-blue-400 hover:underline font-medium">
-                        Create one
+                    Already have an account?{" "}
+                    <a href="/login" className="text-blue-400 hover:underline font-medium">
+                        Login
                     </a>
                 </p>
             </div>

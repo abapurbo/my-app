@@ -17,7 +17,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Products', href: '/products' },
-    { name: 'Categories', href: '/categories' },
+    { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -98,7 +98,7 @@ export default function Navbar() {
           <div className="md:flex items-center space-x-2">
             {user ? (
               // user logged in view
-              <div className="dropdown dropdown-end relative">
+              <div className="dropdown dropdown-end relative ">
                 {/* Avatar Button */}
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full ring ring-blue-500 ring-offset-2 ring-offset-white overflow-hidden">
@@ -109,12 +109,12 @@ export default function Navbar() {
                 {/* Dropdown Menu */}
                 <ul
                   tabIndex={-1}
-                  className="menu text-[17px] space-y-3 menu-sm dropdown-content bg-gray-900 rounded-xl shadow-lg mt-3 w-56 p-2 flex flex-col gap-1 z-50"
+                  className="menu text-[17px] space-y-3 menu-sm border   dropdown-content bg-gray-800 rounded-xl shadow-lg mt-6 w-56 p-2 flex flex-col gap-1 z-50"
                 >
                   <li>
-                    <button className="flex items-center gap-2 text-[16px] text-white px-4 py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors">
+                    <Link href="/addProduct" className="flex items-center gap-2 text-[16px] text-white px-4 py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors">
                       <FaPlus className="text-blue-500" /> Add Product
-                    </button>
+                    </Link>
                   </li>
                   <li>
                     <button className="flex items-center gap-2 text-[16px] px-4 text-white py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors">
@@ -132,10 +132,10 @@ export default function Navbar() {
             ) : (
               // user not logged in view
               <div className="flex space-x-2">
-                <Link href="/login" className={`btn text-[16px] btn-outline btn-primary ${pathname === '/login' ? 'bg-blue-700 text-white' : ''}`}>
+                <Link href="/login" className={`btn text-white text-[16px] btn-outline btn-primary ${pathname === '/login' ? 'bg-blue-700 text-white' : ''}`}>
                   Login
                 </Link>
-                <Link href="/signup" className={`btn text-[16px] btn-outline btn-primary ${pathname === '/signup' ? 'bg-blue-700 text-white' : ''}`}>
+                <Link href="/signup" className={`btn text-[16px] text-white btn-outline btn-primary ${pathname === '/signup' ? 'bg-blue-700 text-white' : ''}`}>
                   Sign Up
                 </Link>
               </div>

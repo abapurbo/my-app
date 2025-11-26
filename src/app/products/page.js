@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa"; // icon import
 
 const products = [
   { id: 1, name: "Smartphone X200", price: "$799", category: "Smartphones", description: "Latest model with high performance and sleek design, perfect for everyday use.", image: "https://via.placeholder.com/300x300.png?text=Smartphone+X200" },
@@ -31,34 +32,40 @@ export default function ProductsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+      
       {/* Title & Subtitle */}
-      <div className="max-w-3xl mx-auto text-center mb-8">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-white">
           All Electronics <span className="text-blue-500">Products</span>
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-lg sm:text-xl text-gray-300">
           Discover the latest gadgets, accessories, and tech essentials for your everyday life.
         </p>
       </div>
 
       {/* Search & Category Filters */}
-      <div className="max-w-3xl mx-auto mb-12 px-4 md:px-0 flex flex-col sm:flex-row gap-4">
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm"
-        />
+      <div className="max-w-3xl mx-auto mb-12 flex flex-col sm:flex-row gap-4 px-4 md:px-0 relative">
+        {/* Search with Icon */}
+        <div className="flex-1 relative">
+          <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+          />
+        </div>
+
         <div className="relative w-full md:w-48">
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm appearance-none"
+            className="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm appearance-none"
           >
             {categories.map((cat) => (
-              <option className="text-[13px]" key={cat} value={cat}>
+              <option key={cat} value={cat} className="text-white">
                 {cat}
               </option>
             ))}
@@ -72,9 +79,9 @@ export default function ProductsPage() {
           filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              className="bg-gray-800/70 border border-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col"
             >
-              {/* Image/Icon */}
+              {/* Image */}
               <img
                 src={product.image}
                 alt={product.name}
@@ -82,27 +89,20 @@ export default function ProductsPage() {
               />
 
               {/* Content */}
-              <div className="p-4 flex-1 flex flex-col">
-                {/* Title */}
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">{product.name}</h3>
-
-                {/* Short Description */}
-                <p className="text-gray-500 text-sm mb-2 line-clamp-2">
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="text-lg font-semibold text-white mb-2">{product.name}</h3>
+                <p className="text-gray-300 text-sm mb-3 line-clamp-2">
                   {product.description}
                 </p>
-
-                {/* Price/Meta */}
-                <p className="text-blue-600 font-bold mb-4">{product.price}</p>
-
-                {/* Details Button */}
-                <button className="mt-auto w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                <p className="text-blue-400 font-bold mb-4">{product.price}</p>
+                <button className="mt-auto w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                   Details
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500 col-span-full">No products found.</p>
+          <p className="text-center text-gray-400 col-span-full">No products found.</p>
         )}
       </div>
     </div>

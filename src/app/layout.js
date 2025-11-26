@@ -17,14 +17,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {  // ✅ type removed
+export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SessionProvider>
-          <Navbar />
-          {children}
-          <div>{/* footer */}
+          <div>
+            <Navbar />
+          </div>
+          <div>
+            {children}
+          </div>
+          <div>
+            {/* footer */}
             <Footerpage></Footerpage>
           </div>
         </SessionProvider>

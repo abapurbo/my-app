@@ -1,12 +1,15 @@
 import Image from "next/image";
+import Heropage from "./component/hero/page";
 
-export default function Home() {
+export default function Homepage() {
   return (
-    <div className="h-[200px]">
+    <div className="-mt-10">
+      {/* hero section */};
+      
+        <Heropage></Heropage>
+      
 
 
-
-     
     </div>
   );
 }

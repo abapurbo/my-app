@@ -5,7 +5,7 @@ import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Contactpage() {
     return (
-        <div className="min-h-screen bg-gray-800 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black flex items-center justify-center px-4">
             <div className="w-full max-w-xl bg-gray-800  shadow-xl rounded-2xl p-8 border border-gray-700">
 
                 {/* Title */}

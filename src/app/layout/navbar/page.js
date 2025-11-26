@@ -9,7 +9,7 @@ import { FaBars, FaTimes, FaPlus, FaBoxes, FaSignOutAlt } from 'react-icons/fa'
 export default function Navbar() {
   const pathname = usePathname()
   const [user, setUser] = useState({
-    name:'apurbo'
+    name: 'apurbo'
   })
   const [isOpen, setIsOpen] = useState(false)
   const toggleMenu = () => setIsOpen(!isOpen)
@@ -117,9 +117,12 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <button className="flex items-center gap-2 text-[16px] px-4 text-white py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors">
+                    <Link
+                      href="/manageProducts"
+                      className="flex items-center gap-2 text-[16px] px-4 text-white py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors"
+                    >
                       <FaBoxes className="text-blue-500" /> Manage Products
-                    </button>
+                    </Link>
                   </li>
                   <li>
                     <button className=" btn btn-outline   text-[16px] px-4 py-2 rounded-lg hover:bg-red-500 hover:text-white text-red-500 transition-colors">

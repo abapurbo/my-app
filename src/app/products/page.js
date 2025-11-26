@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa"; // icon import
+import { FaSearch } from "react-icons/fa";
 
 const products = [
   { id: 1, name: "Smartphone X200", price: "$799", category: "Smartphones", description: "Latest model with high performance and sleek design, perfect for everyday use.", image: "https://via.placeholder.com/300x300.png?text=Smartphone+X200" },
@@ -32,14 +32,14 @@ export default function ProductsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white text-gray-900 py-12 px-4 sm:px-6 lg:px-10">
       
       {/* Title & Subtitle */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-white">
-          All Electronics <span className="text-blue-500">Products</span>
+        <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900">
+          All Electronics <span className="text-blue-600">Products</span>
         </h1>
-        <p className="text-lg sm:text-xl text-gray-300">
+        <p className="text-lg sm:text-xl text-gray-600">
           Discover the latest gadgets, accessories, and tech essentials for your everyday life.
         </p>
       </div>
@@ -54,7 +54,7 @@ export default function ProductsPage() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm"
           />
         </div>
 
@@ -62,10 +62,10 @@ export default function ProductsPage() {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm appearance-none"
+            className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm appearance-none"
           >
             {categories.map((cat) => (
-              <option key={cat} value={cat} className="text-white">
+              <option key={cat} value={cat}>
                 {cat}
               </option>
             ))}
@@ -79,22 +79,22 @@ export default function ProductsPage() {
           filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-gray-800/70 border border-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col"
+              className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
               {/* Image */}
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-54 object-cover"
               />
 
               {/* Content */}
               <div className="p-5 flex-1 flex flex-col">
-                <h3 className="text-lg font-semibold text-white mb-2">{product.name}</h3>
-                <p className="text-gray-300 text-sm mb-3 line-clamp-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.name}</h3>
+                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                   {product.description}
                 </p>
-                <p className="text-blue-400 font-bold mb-4">{product.price}</p>
+                <p className="text-blue-600 font-bold mb-4">{product.price}</p>
                 <button className="mt-auto w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                   Details
                 </button>

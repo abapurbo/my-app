@@ -1,53 +1,151 @@
-import React from "react";
+'use client'
 
-export default function Navpage() {
-    return <div>
-        <div className="navbar bg-base-100 shadow-sm">
-            <div className="flex-1">
-                <a className="btn btn-ghost text-black text-xl">daisyUI</a>
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { FaBars, FaTimes, FaPlus, FaBoxes, FaSignOutAlt } from 'react-icons/fa'
+// Static user
+
+export default function Navbar() {
+  const pathname = usePathname()
+  const [user, setUser] = useState({
+    name:'apurbo'
+  })
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleMenu = () => setIsOpen(!isOpen)
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Products', href: '/products' },
+    { name: 'Categories', href: '/categories' },
+    { name: 'Contact', href: '/contact' },
+  ]
+
+  return (
+    <nav className="bg-gray-900 shadow sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+
+          {/* Logo + Mobile button */}
+          <div className="flex items-center relative gap-2">
+            <div className="md:hidden flex items-center">
+              <button onClick={toggleMenu} className="focus:outline-none text-white">
+                {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+              </button>
             </div>
-            <div className="flex-none">
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /> </svg>
-                            <span className="badge badge-sm indicator-item">8</span>
-                        </div>
-                    </div>
-                    <div
-                        tabIndex={0}
-                        className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
-                        <div className="card-body">
-                            <span className="text-lg font-bold">8 Items</span>
-                            <span className="text-info">Subtotal: $999</span>
-                            <div className="card-actions">
-                                <button className="btn btn-primary btn-block">View cart</button>
-                            </div>
-                        </div>
-                    </div>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+              <div className="md:hidden p-2 rounded-xl absolute top-13 -left-3 bg-gray-900 shadow-md flex flex-col">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className={`px-4 py-2 text-center  ${isActive ? 'text-blue-600 font-semibold underline ' : 'text-white hover:text-blue-600'}`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )
+                })}
+
+                {!user && (
+                  <>
+                    <Link
+                      href="/login"
+                      className={`px-4 py-2 text-center border-b btn text-[17px] btn-primary ${pathname === '/login' ? 'bg-blue-700 text-white' : ''}`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/signup"
+                      className={`px-4 py-2 text-center border-b btn text-[17px] btn-primary ${pathname === '/signup' ? 'bg-blue-700 text-white' : ''}`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                )}
+              </div>
+            )}
+
+
+            <Link href="/" className="text-2xl font-bold text-white">
+              ElectroMart
+            </Link>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex flex-1 justify-center space-x-8">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`transition ${isActive ? 'text-blue-600 font-bold underline' : 'text-white   hover:text-blue-600 hover:underline'}`}
+                >
+                  {link.name}
+                </Link>
+              )
+            })}
+          </div>
+
+          {/* User / Auth Buttons */}
+          <div className="md:flex items-center space-x-2">
+            {user ? (
+              // user logged in view
+              <div className="dropdown dropdown-end relative">
+                {/* Avatar Button */}
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full ring ring-blue-500 ring-offset-2 ring-offset-white overflow-hidden">
+                    <img src={user.image} alt={user.name} />
+                  </div>
                 </div>
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
-                    <ul
-                        tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
+
+                {/* Dropdown Menu */}
+                <ul
+                  tabIndex={-1}
+                  className="menu text-[17px] space-y-3 menu-sm dropdown-content bg-gray-900 rounded-xl shadow-lg mt-3 w-56 p-2 flex flex-col gap-1 z-50"
+                >
+                  <li>
+                    <button className="flex items-center gap-2 text-[16px] text-white px-4 py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors">
+                      <FaPlus className="text-blue-500" /> Add Product
+                    </button>
+                  </li>
+                  <li>
+                    <button className="flex items-center gap-2 text-[16px] px-4 text-white py-2 rounded-lg hover:text-blue-600 hover:bg-blue-100 transition-colors">
+                      <FaBoxes className="text-blue-500" /> Manage Products
+                    </button>
+                  </li>
+                  <li>
+                    <button className=" btn btn-outline   text-[16px] px-4 py-2 rounded-lg hover:bg-red-500 hover:text-white text-red-500 transition-colors">
+                      <FaSignOutAlt /> Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+            ) : (
+              // user not logged in view
+              <div className="flex space-x-2">
+                <Link href="/login" className={`btn text-[16px] btn-outline btn-primary ${pathname === '/login' ? 'bg-blue-700 text-white' : ''}`}>
+                  Login
+                </Link>
+                <Link href="/signup" className={`btn text-[16px] btn-outline btn-primary ${pathname === '/signup' ? 'bg-blue-700 text-white' : ''}`}>
+                  Sign Up
+                </Link>
+              </div>
+            )}
+
+          </div>
         </div>
-    </div>;
+      </div>
+
+
+    </nav>
+  )
 }

@@ -2,6 +2,8 @@ import Image from "next/image";
 import Heropage from "./component/hero/page";
 import Cardpage from "./component/card/page";
 import Testimonialpage from "./component/testimonial/page";
+import HowToWorkpage from "./component/howToWork/page";
+import Dealspage from "./component/deals/page";
 
 export default function Homepage() {
   return (
@@ -16,6 +18,13 @@ export default function Homepage() {
 
       <div>
         <Testimonialpage></Testimonialpage>
+
+      </div>
+      <div>
+          <Dealspage></Dealspage>
+      </div>
+      <div>
+        <HowToWorkpage></HowToWorkpage>
       </div>
 
     </div>

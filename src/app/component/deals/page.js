@@ -7,7 +7,7 @@ const deals = [
     description: "Latest smartphone with AI camera and high performance.",
     price: "$1199",
     discount: "$999",
-    image: "https://via.placeholder.com/300x300.png?text=Samsung+S24+Ultra",
+    image: "https://i.ibb.co.com/8nYfNKdn/Samsungs-Galaxy-S24-Ultra-shows-off-its-perfectly-flat-screen-in-a-quick-new-hands-on-video.jpg",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const deals = [
     description: "Compact laptop for productivity with powerful specs.",
     price: "$1299",
     discount: "$1149",
-    image: "https://via.placeholder.com/300x300.png?text=Dell+XPS+13",
+    image: "https://i.ibb.co.com/kVnkZZQ9/93002-19e7b507-89a4-4aef-ae25-b01a1f2f20a9.jpg",
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const deals = [
     description: "Noise-cancelling wireless headphones.",
     price: "$399",
     discount: "$349",
-    image: "https://via.placeholder.com/300x300.png?text=Sony+WH-1000XM5",
+    image: "https://i.ibb.co.com/LDzTNz4D/d64f75a65af209a48403afd40723f654.jpg",
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const deals = [
     description: "Portable gaming console with vibrant OLED display.",
     price: "$349",
     discount: "$299",
-    image: "https://via.placeholder.com/300x300.png?text=Nintendo+Switch+OLED",
+    image: "https://i.ibb.co.com/YFcd4vtX/06576371c72bcf94f3e18babc080f922.jpg",
   },
 ];
 
